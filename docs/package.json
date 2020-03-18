@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
-    "heroku": "cd .. && git subtree push --prefix docs heroku master"
+    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www",
+    "heroku": "cd .. && git add . && git commit -m 'update' && git subtree push --prefix docs heroku master"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
