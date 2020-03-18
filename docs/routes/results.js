@@ -23,7 +23,8 @@ router.get('/', function(req, res, next) {
         answer2: poll.answer2.value,
         votes2: poll.answer2.votes,
         answer3: poll.answer3.value,
-        votes3: poll.answer3.votes
+        votes3: poll.answer3.votes,
+        refreshUrl: `${process.env.BASE_URL}/results?code=${code}&voted=${voted}`
       });
     });
   }
