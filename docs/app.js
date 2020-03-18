@@ -11,7 +11,7 @@ var createRouter = require('./routes/create');
 var createdRouter = require('./routes/created');
 var closeRouter = require('./routes/close');
 var voteRouter = require('./routes/vote');
-var votedRouter = require('./routes/voted');
+var resultsRouter = require('./routes/results');
 
 
 var app = express();
@@ -32,7 +32,7 @@ app.use('/created', createdRouter);
 app.use('/close', closeRouter);
 app.use('/poll', pollRouter);
 app.use('/vote', voteRouter);
-app.use('/voted', votedRouter);
+app.use('/results', resultsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

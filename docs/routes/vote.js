@@ -27,7 +27,7 @@ router.get('/', function(req, res, next) {
   }
 
   mongo(onConnect)
-  res.redirect('/voted')
+  res.redirect(`/results?code=${code}&voted=${vote}`)
 
 });
 
