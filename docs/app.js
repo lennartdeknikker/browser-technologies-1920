@@ -5,12 +5,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
 var indexRouter = require('./routes/index');
 var pollRouter = require('./routes/poll');
 var createRouter = require('./routes/create');
 var createdRouter = require('./routes/created');
 var closeRouter = require('./routes/close');
+var voteRouter = require('./routes/vote');
+var votedRouter = require('./routes/voted');
 
 
 var app = express();
@@ -30,6 +31,8 @@ app.use('/create', createRouter);
 app.use('/created', createdRouter);
 app.use('/close', closeRouter);
 app.use('/poll', pollRouter);
+app.use('/vote', voteRouter);
+app.use('/voted', votedRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
