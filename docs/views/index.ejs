@@ -1,17 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <h2>Create a new poll</h2>
-    <a href="/create"><button>Create new poll</button></a>
-    <h2>Answer an existing poll</h2>
-    <form action="/answer" method="GET">
-      <input id="code" name="code" type="text">
-      <button type="submit">Go</button>
-    </form>
-  </body>
-</html>
+<% include ./partials/header %> 
+  <a href="/create"><button>Create new poll</button></a>
+  <form action="/poll" method="GET">
+    <input id="code" name="code" type="text" placeholder="poll code">
+    <button type="submit">Enter this poll</button>
+  </form>
+<% include ./partials/footer %> 

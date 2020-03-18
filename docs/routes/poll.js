@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET users listing. */
+/* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('create', { title: 'new Poll'});
+  const code = req.query.code;
+  res.render('poll', { title: `Poll ${code}` });
 });
 
 module.exports = router;

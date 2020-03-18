@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -5,8 +7,11 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var answerRouter = require('./routes/answer');
+var pollRouter = require('./routes/poll');
 var createRouter = require('./routes/create');
+var createdRouter = require('./routes/created');
+var closeRouter = require('./routes/close');
+
 
 var app = express();
 
@@ -22,7 +27,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/create', createRouter);
-app.use('/answer', answerRouter);
+app.use('/created', createdRouter);
+app.use('/close', closeRouter);
+app.use('/poll', pollRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
