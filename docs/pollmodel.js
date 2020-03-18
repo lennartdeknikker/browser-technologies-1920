@@ -18,6 +18,7 @@ const pollSchema = new mongoose.Schema({
   }
 });
 
+
 const Poll = mongoose.model('poll', pollSchema);
 
 module.exports = Poll;
