@@ -15,7 +15,11 @@ const pollSchema = new mongoose.Schema({
   answer3: {
     value: String,
     votes: Number
-  }
+  },
+  open: {
+    type: Boolean,
+    default: true
+  } 
 });
 
 

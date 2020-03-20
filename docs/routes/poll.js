@@ -10,7 +10,6 @@ router.get('/', function(req, res, next) {
   
   const onConnect = function() {
     Poll.findOne({ code: code }, function (err, poll) {
-      console.log(poll)
       res.render('poll', { 
         title: `Poll ${code}`,
         code: poll.code,

@@ -8,26 +8,28 @@ const Poll = require('../pollmodel')
 router.get('/', function(req, res, next) {
   const vote = req.query.answer;
   const code = req.query.code;
-  console.log(code);
   
-  const onConnect = function() {
-    console.log('connected')
-    const query = { code: code };
-    Poll.findOneAndUpdate(query, { 
+  const onConnect = async function() {
+    const query = { code: code, open: true };
+    const poll = await Poll.findOneAndUpdate(query, { 
         $inc: {
           [`answer${vote}.votes`]: 1
         }
       }, {new:true}, function(err) {
         if (err) return console.error(err); else {
-          console.log(`updated`)
         }
       }
     )
-
+    
+    if (poll) {
+      res.redirect(`/results?code=${code}&voted=${vote}`)
+    } else {
+      res.render('error', {message: 'this poll is closed'})
+    }
   }
 
   mongo(onConnect)
-  res.redirect(`/results?code=${code}&voted=${vote}`)
+  
 
 });
 

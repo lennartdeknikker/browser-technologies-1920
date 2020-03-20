@@ -8,13 +8,10 @@ router.get('/', function(req, res, next) {
   const code = req.query.code
   const voted = req.query.voted
   const onConnect = function() {
-    console.log(code)
-    console.log(code)
-    console.log(code)
     Poll.findOne({ code: code }, function (err, poll) {
-      console.log(poll)
       res.render('results', {
         voted: voted,
+        closing: false,
         title: `Results for poll ${code}`,
         code: poll.code,
         statement: poll.statement,

@@ -1,11 +1,38 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
+const mongo = require('../mongo');
+const Poll = require('../pollmodel')
+
+router.get('/', function(req, res) {
   const code = req.query.code
-  console.log('closed poll ' + code);
-  res.render('closed', { title: 'new Poll', code: code});
+  const onConnect = async function() {
+    // close current poll
+    const query = { code: code };
+    const change = { open: false };
+    const poll = await Poll.findOneAndUpdate(query, change, {new:true}, function(err) {
+        if (err) return console.error(err); else {
+        }
+      }
+    )
+
+      res.render('results', {
+        voted: false,
+        closing: true,
+        title: `Results for poll ${code}`,
+        code: poll.code,
+        statement: poll.statement,
+        answer1: poll.answer1.value,
+        votes1: poll.answer1.votes,
+        answer2: poll.answer2.value,
+        votes2: poll.answer2.votes,
+        answer3: poll.answer3.value,
+        votes3: poll.answer3.votes,
+        refreshUrl: false,
+      });
+  }
+  mongo(onConnect)
+
 });
 
 module.exports = router;
