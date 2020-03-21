@@ -1,12 +1,12 @@
 
-var mongoose = require("mongoose")
+var mongoose = require('mongoose')
 
 function mongoconnect(callback) {
 
     mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true})
     var db = mongoose.connection
-    db.on("error", console.error.bind(console, "connection error:"))
-    db.once("open", function() {
+    db.on('error', console.error.bind(console, 'connection error:'))
+    db.once('open', function() {
         callback()
     })
 

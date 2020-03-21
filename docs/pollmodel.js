@@ -1,4 +1,4 @@
-const mongoose = require("mongoose")
+const mongoose = require('mongoose')
 
 const pollSchema = new mongoose.Schema({
     code: Number,
@@ -23,6 +23,6 @@ const pollSchema = new mongoose.Schema({
 })
 
 
-const Poll = mongoose.model("poll", pollSchema)
+const Poll = mongoose.model('poll', pollSchema)
 
 module.exports = Poll

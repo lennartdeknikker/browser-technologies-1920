@@ -1,15 +1,15 @@
-var express = require("express")
+var express = require('express')
 var router = express.Router()
 
-const mongo = require("../mongo")
-const Poll = require("../pollmodel")
+const mongo = require('../mongo')
+const Poll = require('../pollmodel')
 
-router.get("/", function(req, res) {
+router.get('/', function(req, res) {
     const code = req.query.code
     const voted = req.query.voted
     const onConnect = function() {
         Poll.findOne({ code: code }, function (err, poll) {
-            res.render("results", {
+            res.render('results', {
                 voted: voted,
                 closing: false,
                 title: `Results for poll ${code}`,

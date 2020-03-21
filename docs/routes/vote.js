@@ -1,11 +1,11 @@
-var express = require("express")
+var express = require('express')
 var router = express.Router()
 
-const mongo = require("../mongo")
-const Poll = require("../pollmodel")
+const mongo = require('../mongo')
+const Poll = require('../pollmodel')
 
 /* GET home page. */
-router.get("/", function(req, res) {
+router.get('/', function(req, res) {
     const vote = req.query.answer
     const code = req.query.code
   
@@ -13,17 +13,17 @@ router.get("/", function(req, res) {
         const query = { code: code, open: true }
         const poll = await Poll.findOneAndUpdate(query, { 
             $inc: {
-                [`answer${vote}.votes`]: 1
+                [`answer${vote}.votes`]: 0.5
             }
         }, {new:true}, function(err) {
-            if (err) return console.error(err)
+            if (err) return console.error(err) 
         }
         )
     
         if (poll) {
             res.redirect(`/results?code=${code}&voted=${vote}`)
         } else {
-            res.render("error", {message: "this poll is closed"})
+            res.render('error', {message: 'this poll is already closed'})
         }
     }
 
