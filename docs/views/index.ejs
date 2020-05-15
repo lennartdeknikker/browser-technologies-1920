@@ -1,0 +1,12 @@
+<% include ./partials/header %>
+
+  <a href="/create"><button class="button-create-new-poll">Create new poll</button></a>
+  <form action="/poll" method="GET" class="form-enter-poll">
+    <fieldset>
+      <legend>Enter an existing poll</legend>
+      <label for="code">code</label>
+        <input id="code" class="input-pollcode" maxlength="3" name="code" type="text" placeholder="type code here">
+    </fieldset>
+    <input class="button-enter-poll" type="submit" value="Enter" />
+  </form>
+<% include ./partials/footer %> 

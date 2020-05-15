@@ -1,4 +1,0 @@
-[submodule "docs/poll-creator"]
-	path = docs/poll-creator
-	url = https://github.com/lennartdeknikker/poll-creator.git
-	branch = master

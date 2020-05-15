@@ -1,0 +1,42 @@
+<% include ./partials/header %>
+
+<h2><span>Statement: </span><%= statement %></h2>
+<% if (voted) { %>
+  <h3>You voted for answer <%= voted %> </h3> 
+<% } %>
+<% if (!open) { %>
+  <h4>This poll is closed now.</h4> 
+<% } %>
+<ul class="poll-details-list">
+  <li><span><em>Answer 1: </em><%= answer1 %></span><%= votes1 %> 
+    <% if (votes1 === 1) { %>
+      vote
+    <% } else { %>
+      votes
+    <% } %>
+  </li>
+  <li><span>Answer 2: <%= answer2 %> </span><%= votes2 %> 
+    <% if (votes2 === 1) { %>
+      vote
+    <% } else { %>
+      votes
+    <% } %>
+  </li>
+  <li><span>Answer 3: <%= answer3 %> </span><%= votes3 %> 
+    <% if (votes3 === 1) { %>
+      vote
+    <% } else { %>
+      votes
+    <% } %>
+  </li>
+</ul>
+
+<% if (refreshUrl && open) { %>
+  <a href="<%= refreshUrl %> "><button>Refresh</button></a>
+<% } %>
+
+<% if (!open) { %>
+  <a href="/"><button>Create a new poll</button></a>
+<% } %>
+
+<% include ./partials/footer %> 
